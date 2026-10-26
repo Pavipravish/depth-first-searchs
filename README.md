@@ -133,7 +133,6 @@ traversepath = dfs(graph, start, visited, path)
 print("Depth First Search:")
 print(traversepath)
 ```
-
 ## Output:
 
 ```
@@ -150,6 +149,8 @@ F H
 
 ```
 <img width="1213" height="611" alt="Screenshot 2026-10-26 082740" src="https://github.com/user-attachments/assets/7ed454ee-b4ca-477f-aad1-0307ffd54b61" />
+
+
 
 <hr>
 <h3>Result:</h3>
