@@ -27,3 +27,68 @@ Visit node 1
  Visit node 1
 
 Step 4: Now, Node 2 at the top of the stack, so visit node 2 and pop it from the stack and put all of its adjacent nodes which are not visited (i.e, 3, 4) in the stack.
+Visit node 1
+5 5 <BR>
+0 1 <BR>
+0 2 <BR>
+0 3 <BR>
+2 3 <BR>
+2 4 <BR>
+<hr>
+<h3>Sample Output</h3>
+<hr>
+['0', '1', '2', '3', '4']
+
+<hr>
+
+## PROGRAM:
+```
+from collections import defaultdict
+import networkx as nx
+import matplotlib.pyplot as plt
+
+graph=defaultdict(list)
+G=nx.Graph()
+nodes,edges=map(int,input().split())
+for i in range(edges):
+    u,v=map(str,input().split())
+    graph[u].append(v)
+    graph[v].append(u)
+    G.add_edge(u,v)
+fig, ax = plt.subplots()
+pos = nx.spring_layout(G)
+
+nx.draw_networkx_nodes(G, pos, ax=ax, node_color="lightblue", node_size=2000)
+nx.draw_networkx_edges(G, pos, ax=ax, edge_color="red", width=2)
+nx.draw_networkx_labels(G, pos, ax=ax)
+
+plt.show()
+print(graph)
+
+#Depth First Search
+def dfs(graph, start, visited, path):
+    path.append(start)
+    visited[start] = True
+
+    for neighbour in graph[start]:
+        if not visited[neighbour]:
+            dfs(graph, neighbour, visited, path)
+
+    return path
+
+# input start node
+start = input()
+
+path = []
+visited = defaultdict(bool)
+traversepath = dfs(graph, start, visited, path)
+print("Depth First Search:")
+print(traversepath)
+```
+## OUTPUT: 
+<img width="1427" height="627" alt="image" src="https://github.com/user-attachments/assets/421e7e03-a8bc-4acd-b132-4c06d2ef25ec" />
+<img width="963" height="517" alt="image" src="https://github.com/user-attachments/assets/3860f52e-bf56-4ef5-a69e-acb2f4c560e9" />
+
+<h3>Result:</h3>
+<hr>
+<p>Thus,a Graph was constructed and implementation of Depth First Search for the same graph was done successfully
